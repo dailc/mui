@@ -125,12 +125,7 @@
 					<ul class="mui-table-view mui-table-view-chevron">
 						<li class="mui-table-view-cell">
 							<a class="mui-navigate-right" href="examples/slider-default.html">
-								默认样式（H5模式）
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-plus-visible">
-							<a class="mui-navigate-right" data-title-type="native" href="examples/slider-native.html">
-								默认样式（native模式）
+								默认样式
 							</a>
 						</li>
 						<li class="mui-table-view-cell">
@@ -241,22 +236,17 @@
 					<ul class="mui-table-view mui-table-view-chevron">
 						<li class="mui-table-view-cell">
 							<a class="mui-navigate-right" href="examples/nav.html">
-								默认标题（div模式）
+								div title
 							</a>
 						</li>
 						<li class="mui-table-view-cell mui-plus-visible">
 							<a class="mui-navigate-right" data-title-type="native" href="examples/nav-nativeObj.html">
-								默认标题（native模式）
+								native title
 							</a>
 						</li>
 						<li class="mui-table-view-cell">
 							<a class="mui-navigate-right" href="examples/nav_transparent.html">
 								透明渐变(div模式)
-							</a>
-						</li>
-						<li class="mui-table-view-cell mui-plus-visible">
-							<a class="mui-navigate-right" data-title-type="transparent_native" href="examples/nav_transparent_native.html">
-								透明渐变(native模式)
 							</a>
 						</li>
 					</ul>
@@ -482,11 +472,6 @@
 						setting（设置）- div窗体切换示例
 					</a>
 				</li>
-				<li class="mui-table-view-cell">
-					<a class="mui-navigate-right" data-title-type="native" href="examples/best-practices/list-to-detail/listview.html">
-						列表到详情最佳实践
-					</a>
-				</li>
 
 			</ul>
 		</div>
@@ -631,10 +616,7 @@
 							url: "examples/info.html",
 							id: "info",
 							styles: {
-								popGesture: "close",
-								statusbar: {
-									background: "#f7f7f7"
-								}
+								popGesture: "close"
 							},
 							show: {
 								aniShow: aniShow,
@@ -678,55 +660,10 @@
 					popGesture: "close"
 				}
 				var extras = {};
-
-
-				//处理原生图片轮播
-				if(~id.indexOf("slider-native.html")) {
-					webview_style.titleNView = { //配置原生标题
-						'backgroundColor': '#f7f7f7',
-						'titleText': this.innerHTML.trim(),
-						'titleColor': '#000000',
-						autoBackButton: true,
-						splitLine: {
-							color: '#cccccc'
-						}
-					};
-
-					webview_style.subNViews = [{ //配置图片轮播
-						id: 'slider-native',
-						type: 'ImageSlider',
-						styles: {
-							left: 0,
-							right: 0,
-							top: 0,
-							height: '200px',
-							position: 'static',
-							loop: true,
-							images: [{
-								src: '_www/images/yuantiao.jpg',
-								width: '100%'
-							}, {
-								src: '_www/images/shuijiao.jpg',
-								width: '100%',
-							}, {
-								src: '_www/images/muwu.jpg',
-								width: '100%',
-							}, {
-								src: '_www/images/cbd.jpg',
-								width: '100%',
-							}]
-						}
-					}];
-					
-					var webview = plus.webview.create(this.href, id, webview_style, extras);
-					webview.show(aniShow,300);
-					return;
-				}
-
 				if(titleType == "native") {
 					//如下场景不适用下拉回弹：
 					//1、单webview下拉刷新；2、底部有fixed定位的div的页面
-					if(!~id.indexOf('pullrefresh.html') && !~href.indexOf("examples/tabbar.html") && !~href.indexOf("list-to-detail/listview.html")) {
+					if(!~id.indexOf('pullrefresh.html') && !~href.indexOf("examples/tabbar.html")) {
 						webview_style.bounce = "vertical";
 					}
 					//图标页面需要启动硬件加速
@@ -736,11 +673,7 @@
 					if(~id.indexOf('im-chat.html')) {
 						extras.acceleration = "none";
 					}
-
-					webview_style.statusbar = {
-						background: "#f7f7f7"
-					}
-
+					
 					mui.openWindowWithTitle({
 						url:href,
 						id:id,
@@ -748,9 +681,6 @@
 						show:{
 							event:"loaded",
 							extras:extras
-						},
-						waiting: {
-							autoShow: false
 						}
 					},{
 						title:{
@@ -774,23 +704,6 @@
 						extras.acceleration = "capture";
 					}
 					
-
-					if(titleType && titleType=="transparent_native") {
-						webview_style.titleNView = {
-							'backgroundColor': '#f7f7f7',
-							'titleText': this.innerHTML.trim(),
-							'titleColor': '#000000',
-							type: 'transparent',
-							autoBackButton: true,
-							splitLine: {
-								color: '#cccccc'
-							}
-						}
-					}else {
-						webview_style.statusbar = {
-							background: "#f7f7f7"
-						}
-					}
 					
 					var webview = plus.webview.create(this.href,id,webview_style,extras);
 					webview.addEventListener("titleUpdate",function () {
