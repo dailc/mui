@@ -6,3 +6,7 @@ sass/.csslintrc
 
 js/.jscsrc
 js/.jshintrc
+
+
+*.project
+.svn
