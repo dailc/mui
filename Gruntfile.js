@@ -30,9 +30,9 @@ module.exports = function(grunt) {
 		banner: '/*!\n' +
 			' * =====================================================\n' +
 			' * Mui v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-			' * 修改了mui的一些源码: 去除了5+代码，去除了下拉刷新，去除了弹窗相关\n' +
+			' * 修改了mui的一些源码: 去除了5+代码，去除了ajax,下拉刷新，去除了弹窗相关\n' +
 			' * 将offcanvas，popover等单独提取\n' +
-			' * 增加严格模式支持，修改部分文件，如ajax、class、scroll等\n' +
+			' * 增加严格模式支持，修改部分文件，如class、scroll等\n' +
 			' * =====================================================\n' +
 			' */\n',
 
@@ -72,7 +72,7 @@ module.exports = function(grunt) {
 					'js/mui.back.js',
 					//'js/mui.back.5+.js',
 					//'js/mui.init.pullrefresh.js',
-					'js/mui.ajax.js',
+					//'js/mui.ajax.js',
 					//'js/mui.ajax.5+.js',
 					'js/mui.layout.js',
 					'js/mui.animation.js',
